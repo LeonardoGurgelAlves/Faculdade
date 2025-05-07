@@ -2,9 +2,9 @@
 #include <math.h>
 
 int main() {
-    // DeclaraÁ„o de variaveis
+    // Declara√ß√£o de variaveis
     float n1, n2, nt = 0;
-    float notas[3] = {0, 0, 0}; // Õndices para: 0 = AP1, 1 = AP2 e 2 = recuperaÁ„o
+    float notas[3] = {0, 0, 0}; // √çndices para: 0 = AP1, 1 = AP2 e 2 = recupera√ß√£o
     int tentativas = 1; // Contador das tentativas
     float somanotas = 0, media, desviopadrao = 0, somadesvios = 0;
     float historico[100]; // Para guardar todas as notas
@@ -16,22 +16,22 @@ int main() {
     printf("Informe a segunda nota do aluno (AP2): ");
     scanf("%f", &n2);
 
-    // Armazenando os dados nas vari·veis e no histÛrico
+    // Armazenando os dados nas vari√°veis e no hist√≥rico
     notas[0] = n1;
     notas[1] = n2;
     historico[notast++] = n1;
     historico[notast++] = n2;
 
-    // Calculo da mÈdia inicial (AP1 e AP2)
+    // Calculo da m√©dia inicial (AP1 e AP2)
     media = (notas[0] + notas[1]) / 2;
 
-    // Loop para as infinitas tentativas atÈ alcanÁar a mÈdia
+    // Loop para as infinitas tentativas at√© alcan√ßar a m√©dia
     while (media < 6){
         printf("\nVoce nao atingiu a media, tente novamente!.");
-        printf("\nEssa È sua %d™ tentativa: ", tentativas);
+        printf("\nEssa √© sua %d¬™ tentativa: ", tentativas);
         scanf("%f", &nt);
 
-        // SubstituiÁ„o da menor nota
+        // Substitui√ß√£o da menor nota
         if (notas[0] >= notas[1]){
             if (nt > notas[1]){
                 notas[1] = nt; // Substitui a menor nota
@@ -46,7 +46,7 @@ int main() {
             }
         }
 
-        // AtualizaÁ„o do histÛrico de notas
+        // Atualiza√ß√£o do hist√≥rico de notas
         historico[notast++] = nt;
 
         // Contabilizando as tentativas e recalculando a media
@@ -62,7 +62,7 @@ int main() {
     }
     float mediat = somanotas / notast;
 
-    // Fazendo a ordem do histÛrico de notas para poder calcular a mediana
+    // Fazendo a ordem do hist√≥rico de notas para poder calcular a mediana
     for (int i = 0; i < notast - 1; i++){
         for (int j = i + 1; j < notast; j++){
             if (historico[i] > historico[j]){
@@ -81,20 +81,20 @@ int main() {
         mediana = historico[notast / 2];
     }
 
-    // Calculo do desvio padr„o
+    // Calculo do desvio padr√£o
     for (int i = 0; i < notast; i++){
         somadesvios += pow(historico[i] - mediat, 2);
     }
     desviopadrao = sqrt(somadesvios / notast);
 
-    // Mostrando o resultado final do cÛdigo
+    // Mostrando o resultado final do c√≥digo
     printf("\tResultado Final:\n");
     printf("Nota AP1: %.2f\n", notas[0]);
     printf("Nota AP2: %.2f\n", notas[1]);
     printf("Media Final: %.2f\n", media);
     printf("Voce fez %d tentativas.\n", tentativas);
 
-    // mostrando o resultado da media total das notas, mediana e o desvio padr„o.
+    // mostrando o resultado da media total das notas, mediana e o desvio padr√£o.
     printf("\nEstatisticas complementares:\n");
     printf("Media de todas as notas: %.2f\n", mediat);
     printf("Mediana de todas as notas: %.2f\n", mediana);
